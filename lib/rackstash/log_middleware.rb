@@ -13,7 +13,9 @@ module Rackstash
         fields = {
           :method => request.request_method,
           :scheme => request.scheme,
-          :path => (request.fullpath rescue "unknown")
+          :path => (request.fullpath rescue "unknown"),
+          :host => (request.host rescue ''),
+          :user_agent => (request.user_agent rescue '')
         }
         begin
           status, headers, result = @app.call(env)
