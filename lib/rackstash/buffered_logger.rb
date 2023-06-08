@@ -170,7 +170,6 @@ module Rackstash
       buffer[:do_not_log] = !!yes_or_no
     end
 
-  protected
     def delegate_if_required(object_name, *methods)
       object = instance_variable_get(object_name)
       methods = Array(methods).select{|method| object.respond_to? method}
@@ -181,6 +180,7 @@ module Rackstash
       end
     end
 
+  protected
     def default_fields
       HashWithIndifferentAccess.new({"log_id" => uuid, "pid" => Process.pid})
     end
